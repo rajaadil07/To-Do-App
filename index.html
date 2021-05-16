@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Todo App</title>
+</head>
+
+<body>
+    <div style="margin-top: 50px;" class="ui container">
+        <h1 class="ui center aligned header"><center>To Do App</center></h1>
+        <hr>
+        <form class="ui form" action="/add" method="post">
+            <div class="field">
+                <label>Todo Title</label>
+                <input type="text" name="title" placeholder="To Do Task"><br>
+                <label>Deadline</label>
+                <input type="deadline" name="deadline" placeholder="Final Deadline"><br>
+            </div>
+            <button type="submit">Add</button>
+        </form>
+
+        <hr>
+
+        {% for todo in todo_list %}
+        <div class="Display">
+            <p>{{todo.id }} | {{ todo.title }}</p>
+
+            {% if todo.complete == False %}
+            <h1>Task Not Completed</h1>
+            {% endif %}
+
+            <a type="checkbox" href="/update/{{ todo.id }}">Update</a>
+            <a type="checkbox" href="/delete/{{ todo.id }}">Delete</a>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
